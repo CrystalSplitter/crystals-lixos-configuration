@@ -27,7 +27,7 @@
       git = {
         enable = true;
         userName = "CrystalSplitter";
-        userEmail = "crystalwobsite.gay";
+        userEmail = "crystal@crystalwobsite.gay";
       };
     };
   };
