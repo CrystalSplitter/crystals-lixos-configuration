@@ -84,6 +84,8 @@
   };
 
   services.udev.packages = with pkgs; [
+    # Needed for accessing /dev/hidraw devices.
+    # See https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/op/opentabletdriver/package.nix
     opentabletdriver
   ];
 

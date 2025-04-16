@@ -11,13 +11,13 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        inkscape
-        kdePackages.kate
-        krita
-        transmission_4-qt
+        inkscape # Vector art program
+        kdePackages.kate # Text editor
+        krita # Raster art program
+        transmission_4-qt # Torrent client
         vesktop
-        tig
-        gitnuro
+        tig # Git TUI history viewer
+        gitnuro # Git GUI client
       ];
       home.stateVersion = "24.11";
       programs = {
@@ -30,9 +30,9 @@
         firefox.enable = true;
         git = {
           enable = true;
-          userName = "CrystalSplitter";
-          userEmail = "crystal@crystalwobsite.gay";
           package = pkgs.gitFull;
+          userEmail = "crystal@crystalwobsite.gay";
+          userName = "CrystalSplitter";
         };
       };
     };
