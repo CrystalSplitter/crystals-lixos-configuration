@@ -5,12 +5,12 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./home.nix
-    ];
-  
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./home.nix
+  ];
+
   nix = {
     package = pkgs.lix;
     settings.experimental-features = [
@@ -94,7 +94,10 @@
   users.users.crystal = {
     isNormalUser = true;
     description = "Crystal";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
     # Rest of packages configured in home.nix
   };
@@ -105,14 +108,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     fastfetch
-     file
-     fish
-     git
-     hyfetch
-     neovim
-     opentabletdriver
-     wget
+    fastfetch
+    file
+    fish
+    git
+    hyfetch
+    neovim
+    opentabletdriver
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
