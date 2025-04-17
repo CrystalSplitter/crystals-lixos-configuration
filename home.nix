@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
 let
@@ -13,8 +12,8 @@ let
     xdg.configFile = {
       "Kvantum/Otto".source = "${otto-theme-tar}/kvantum/Otto";
       "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=Otto
+        [General]
+        theme=Otto
       '';
     };
   };
@@ -26,13 +25,15 @@ in
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
+        blender # 3D Modelling program
+        clementine # Music player
+        gitnuro # Git GUI client
         inkscape # Vector art program
         kdePackages.kate # Text editor
         krita # Raster art program
+        tig # Git TUI history viewer
         transmission_4-qt # Torrent client
         vesktop
-        tig # Git TUI history viewer
-        gitnuro # Git GUI client
       ];
       home.stateVersion = "24.11";
       programs = {
@@ -50,7 +51,8 @@ in
           userName = "CrystalSplitter";
         };
       };
-    } // theme;
+    }
+    // theme;
   programs.fish.enable = true;
   programs.steam.enable = true;
 }

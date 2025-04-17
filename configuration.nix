@@ -115,18 +115,21 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    fastfetch
-    file
-    fish
-    hyfetch
-    neovim
-    opentabletdriver
-    wget
-    kotlin
-    qt6Packages.qtstyleplugin-kvantum
-  ] ++ haskellPackages;
-  
+  environment.systemPackages =
+    with pkgs;
+    [
+      fastfetch
+      file
+      fish
+      hyfetch
+      neovim
+      opentabletdriver
+      wget
+      kotlin
+      qt6Packages.qtstyleplugin-kvantum
+    ]
+    ++ haskellPackages;
+
   qt = {
     enable = true;
     style = "kvantum";
