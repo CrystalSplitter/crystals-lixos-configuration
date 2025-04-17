@@ -4,6 +4,21 @@
   inputs,
   ...
 }:
+let
+  otto-theme-tar = builtins.fetchTarball {
+    url = "https://gitlab.com/jomada/otto/-/archive/master/otto-master.tar.gz";
+    sha256 = "084p705prjmsz9wgkr1lpgjkyj8j2s9n8pb9fjgbk67fxy52mh77";
+  };
+  theme = {
+    xdg.configFile = {
+      "Kvantum/Otto".source = "${otto-theme-tar}/kvantum/Otto";
+      "Kvantum/kvantum.kvconfig".text = ''
+      [General]
+      theme=Otto
+      '';
+    };
+  };
+in
 {
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
@@ -35,7 +50,7 @@
           userName = "CrystalSplitter";
         };
       };
-    };
+    } // theme;
   programs.fish.enable = true;
   programs.steam.enable = true;
 }

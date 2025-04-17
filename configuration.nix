@@ -3,7 +3,13 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+  haskellPackages = with pkgs; [
+    ghc
+    cabal-install
+    haskell-language-server
+  ];
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -113,12 +119,19 @@
     fastfetch
     file
     fish
-    git
     hyfetch
     neovim
     opentabletdriver
     wget
-  ];
+    kotlin
+    qt6Packages.qtstyleplugin-kvantum
+  ] ++ haskellPackages;
+  
+  qt = {
+    enable = true;
+    style = "kvantum";
+    platformTheme = "kde6";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
