@@ -31,9 +31,11 @@ in
         inkscape # Vector art program
         kdePackages.kate # Text editor
         krita # Raster art program
+        obsidian # Note taking app
         tig # Git TUI history viewer
         transmission_4-qt # Torrent client
-        vesktop
+        vesktop # Chat app wrapper
+        discord # Chat app
       ];
       home.stateVersion = "24.11";
       programs = {

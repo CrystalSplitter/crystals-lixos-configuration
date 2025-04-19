@@ -118,15 +118,19 @@ in
   environment.systemPackages =
     with pkgs;
     [
+      curl
       fastfetch
+      fd
       file
       fish
       hyfetch
+      kotlin
       neovim
       opentabletdriver
-      wget
-      kotlin
       qt6Packages.qtstyleplugin-kvantum
+      ripgrep
+      tree
+      wget
     ]
     ++ haskellPackages;
 
