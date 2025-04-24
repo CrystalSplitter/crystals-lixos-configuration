@@ -129,8 +129,10 @@ in
       opentabletdriver
       qt6Packages.qtstyleplugin-kvantum
       ripgrep
+      samba # For Windows server set up
       tree
       wget
+      xdg-utils
     ]
     ++ haskellPackages;
 

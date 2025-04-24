@@ -19,6 +19,15 @@ let
   };
 in
 {
+  # For opening links in external xdg-open browsers
+  # See https://github.com/NixOS/nixpkgs/issues/330916#issuecomment-2260781383
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config.common.default = "kde";
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.crystal =
@@ -26,10 +35,12 @@ in
     let
       cliPkgs = with pkgs; [
         tig # Git TUI history viewer
+        wl-clipboard # Wayland clipboard provider
       ];
       desktopPkgs = with pkgs; [
         blender # 3D Modelling program
         clementine # Music player
+        firefox # Browser
         gitnuro # Git GUI client
         inkscape # Vector art program
         kdePackages.kate # Text editor
@@ -55,8 +66,6 @@ in
           };
         };
 
-        firefox.enable = true;
-
         fish = {
           enable = true;
           shellInit = builtins.readFile ./dotfiles/fish/config.fish;
@@ -67,6 +76,10 @@ in
           package = pkgs.gitFull;
           userEmail = "crystal@crystalwobsite.gay";
           userName = "CrystalSplitter";
+        };
+
+        firefox = {
+          enable = true;
         };
       };
     }
