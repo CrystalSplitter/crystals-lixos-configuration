@@ -28,6 +28,18 @@ in
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.crystal = {
+    isNormalUser = true;
+    description = "Crystal";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    shell = pkgs.fish;
+    # Rest of packages configured in home.nix
+  };
+
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.crystal =
@@ -47,16 +59,23 @@ in
         kicad # Electronics
         krita # Raster art program
         obsidian # Note taking app
-        discord # Chat app
         transmission_4-qt # Torrent client
         vesktop # Chat app wrapper
       ];
       corporatePkgs = with pkgs; [
         zoom-us # Video call app
       ];
+      pythonPkgs = with pkgs.python313Packages; [
+        python # Python interpreter
+        black # Code formatter
+      ];
     in
     {
-      home.packages = cliPkgs ++ desktopPkgs ++ corporatePkgs;
+      imports = [
+        ./modules/discord_wrapper.nix
+      ];
+
+      home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs;
       home.stateVersion = "24.11";
       programs = {
         alacritty = {
@@ -64,6 +83,16 @@ in
           settings = {
             env.TERM = "xterm-256color";
           };
+        };
+
+        # For discord Krisp support, provided by discord_wrapper.nix
+        discord = {
+          enable = true;
+          wrapDiscord = true;
+        };
+
+        firefox = {
+          enable = true;
         };
 
         fish = {
@@ -78,8 +107,15 @@ in
           userName = "CrystalSplitter";
         };
 
-        firefox = {
+        neovim = {
           enable = true;
+          defaultEditor = true;
+          plugins = with pkgs.vimPlugins; [ lazy-nvim ];
+          extraLuaConfig = ''
+                        vim.opt.expandtab = true
+                        vim.opt.shiftwidth = 4
+                        vim.opt.tabstop = 4
+            	      '';
         };
       };
     }

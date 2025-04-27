@@ -98,18 +98,6 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.crystal = {
-    isNormalUser = true;
-    description = "Crystal";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.fish;
-    # Rest of packages configured in home.nix
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -126,15 +114,21 @@ in
       hyfetch
       kotlin
       neovim
+      nixos-rebuild-ng
       opentabletdriver
       qt6Packages.qtstyleplugin-kvantum
       ripgrep
       samba # For Windows server set up
+      tmux
       tree
       wget
       xdg-utils
     ]
     ++ haskellPackages;
+
+  programs.neovim = {
+    defaultEditor = true;
+  };
 
   qt = {
     enable = true;
