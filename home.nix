@@ -1,13 +1,26 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 let
+  recursiveMerge = sets: lib.foldr lib.recursiveUpdate { } sets;
+
+  alacrittyConfig = {
+    xdg.configFile = {
+      alacritty = {
+        source = ./dotfiles/alacritty;
+        recursive = true;
+      };
+    };
+  };
+
   otto-theme-tar = builtins.fetchTarball {
     url = "https://gitlab.com/jomada/otto/-/archive/master/otto-master.tar.gz";
     sha256 = "084p705prjmsz9wgkr1lpgjkyj8j2s9n8pb9fjgbk67fxy52mh77";
   };
+
   theme = {
     xdg.configFile = {
       "Kvantum/Otto".source = "${otto-theme-tar}/kvantum/Otto";
@@ -17,6 +30,7 @@ let
       '';
     };
   };
+
 in
 {
   # For opening links in external xdg-open browsers
@@ -50,6 +64,7 @@ in
         wl-clipboard # Wayland clipboard provider
       ];
       desktopPkgs = with pkgs; [
+        alacritty # Terminal emulator
         blender # 3D Modelling program
         clementine # Music player
         firefox # Browser
@@ -70,56 +85,64 @@ in
         black # Code formatter
       ];
     in
-    {
-      imports = [
-        ./modules/discord_wrapper.nix
-      ];
+    recursiveMerge [
+      {
+        imports = [
+          ./modules/discord_wrapper.nix
+        ];
 
-      home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs;
-      home.stateVersion = "24.11";
-      programs = {
-        alacritty = {
-          enable = true;
-          settings = {
-            env.TERM = "xterm-256color";
+        home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs;
+        home.stateVersion = "24.11";
+        programs = {
+
+          # For discord Krisp support, provided by discord_wrapper.nix
+          discord = {
+            enable = true;
+            wrapDiscord = true;
+          };
+
+          firefox = {
+            enable = true;
+          };
+
+          fish = {
+            enable = true;
+            shellInit = builtins.readFile ./dotfiles/fish/config.fish;
+          };
+
+          git = {
+            enable = true;
+            package = pkgs.gitFull;
+            userEmail = "crystal@crystalwobsite.gay";
+            userName = "CrystalSplitter";
+          };
+
+          neovim = {
+            enable = true;
+            defaultEditor = true;
+            plugins = with pkgs.vimPlugins; [
+              plenary-nvim
+              nvim-web-devicons
+              nui-nvim
+
+              lualine-nvim
+
+              neogit
+              neo-tree-nvim
+            ];
+            extraLuaConfig = ''
+                          vim.opt.expandtab = true
+                          vim.opt.shiftwidth = 4
+                          vim.opt.tabstop = 4
+
+                          require('lualine').setup()
+              	      '';
           };
         };
-
-        # For discord Krisp support, provided by discord_wrapper.nix
-        discord = {
-          enable = true;
-          wrapDiscord = true;
-        };
-
-        firefox = {
-          enable = true;
-        };
-
-        fish = {
-          enable = true;
-          shellInit = builtins.readFile ./dotfiles/fish/config.fish;
-        };
-
-        git = {
-          enable = true;
-          package = pkgs.gitFull;
-          userEmail = "crystal@crystalwobsite.gay";
-          userName = "CrystalSplitter";
-        };
-
-        neovim = {
-          enable = true;
-          defaultEditor = true;
-          plugins = with pkgs.vimPlugins; [ lazy-nvim ];
-          extraLuaConfig = ''
-                        vim.opt.expandtab = true
-                        vim.opt.shiftwidth = 4
-                        vim.opt.tabstop = 4
-            	      '';
-        };
-      };
-    }
-    // theme;
+      }
+      alacrittyConfig
+      theme
+    ];
   programs.fish.enable = true;
   programs.steam.enable = true;
 }

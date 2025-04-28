@@ -9,6 +9,16 @@ let
     cabal-install
     haskell-language-server
   ];
+  fontPackages = (
+    with pkgs.nerd-fonts;
+    [
+      fira-code
+      gohufont
+      hack
+      lilex
+      overpass
+    ]
+  );
 in
 {
   imports = [
@@ -124,7 +134,8 @@ in
       wget
       xdg-utils
     ]
-    ++ haskellPackages;
+    ++ haskellPackages
+    ++ fontPackages;
 
   programs.neovim = {
     defaultEditor = true;
