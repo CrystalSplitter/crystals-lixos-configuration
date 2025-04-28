@@ -9,8 +9,17 @@ let
 
   alacrittyConfig = {
     xdg.configFile = {
-      alacritty = {
+      "alacritty" = {
         source = ./dotfiles/alacritty;
+        recursive = true;
+      };
+    };
+  };
+
+  weztermConfig = {
+    xdg.configFile = {
+      "wezterm" = {
+        source = ./dotfiles/wezterm;
         recursive = true;
       };
     };
@@ -64,7 +73,7 @@ in
         wl-clipboard # Wayland clipboard provider
       ];
       desktopPkgs = with pkgs; [
-        alacritty # Terminal emulator
+        # alacritty # Terminal emulator
         blender # 3D Modelling program
         clementine # Music player
         firefox # Browser
@@ -76,6 +85,7 @@ in
         obsidian # Note taking app
         transmission_4-qt # Torrent client
         vesktop # Chat app wrapper
+        wezterm # Terminal emulator
       ];
       corporatePkgs = with pkgs; [
         zoom-us # Video call app
@@ -140,7 +150,8 @@ in
           };
         };
       }
-      alacrittyConfig
+      # alacrittyConfig
+      weztermConfig
       theme
     ];
   programs.fish.enable = true;
