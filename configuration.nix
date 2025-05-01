@@ -121,6 +121,7 @@ in
       fd
       file
       fish
+      htop
       hyfetch
       kotlin
       neovim
