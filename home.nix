@@ -125,6 +125,7 @@ in
             package = pkgs.gitFull;
             userEmail = "crystal@crystalwobsite.gay";
             userName = "CrystalSplitter";
+            lfs.enable = true;
           };
 
           neovim = {
