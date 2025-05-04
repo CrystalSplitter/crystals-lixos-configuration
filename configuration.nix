@@ -112,11 +112,18 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile.
+  # These are all considered "any-user critical".
+  # Anything that is not needed by root can
+  # be in their user profiles.
   environment.systemPackages =
     with pkgs;
     [
+      # Compression tooling
+      _7zz
+      zip
+      unzip
+
       curl
       evtest-qt # For udev event testing
       fastfetch
