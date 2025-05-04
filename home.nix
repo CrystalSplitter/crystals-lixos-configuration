@@ -114,11 +114,11 @@ in
         home.stateVersion = "24.11";
         programs = {
 
-          # For discord Krisp support, provided by discord_wrapper.nix
-          discord = {
-            enable = true;
-            wrapDiscord = true;
-          };
+          # # For discord Krisp support, provided by discord_wrapper.nix
+          # discord = {
+          #   enable = true;
+          #   wrapDiscord = true;
+          # };
 
           firefox = {
             enable = true;
