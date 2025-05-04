@@ -100,6 +100,9 @@ in
         python # Python interpreter
         black # Code formatter
       ];
+      winePkgs = with pkgs.wineWowPackages; [
+        full
+      ];
     in
     recursiveMerge [
       {
@@ -107,7 +110,7 @@ in
           ./modules/discord_wrapper.nix
         ];
 
-        home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs;
+        home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs ++ winePkgs;
         home.stateVersion = "24.11";
         programs = {
 
