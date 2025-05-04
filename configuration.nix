@@ -125,7 +125,7 @@ in
       hyfetch
       kotlin
       neovim
-      nixos-rebuild-ng
+      nixos-rebuild-ng # Faster/safer nixos-rebuild
       opentabletdriver
       qt6Packages.qtstyleplugin-kvantum
       ripgrep
