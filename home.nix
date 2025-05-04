@@ -5,6 +5,12 @@
   ...
 }:
 let
+  
+  # Args:
+  #  sets - List of attribute sets to merge together.
+  #
+  # Returns:
+  #  A new attribute set with all the `sets` values combined.
   recursiveMerge = sets: lib.foldr lib.recursiveUpdate { } sets;
 
   alacrittyConfig = {
