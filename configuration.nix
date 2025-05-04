@@ -104,6 +104,7 @@ in
     # See https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/op/opentabletdriver/package.nix
     opentabletdriver
   ];
+  hardware.opentabletdriver.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -117,6 +118,7 @@ in
     with pkgs;
     [
       curl
+      evtest-qt # For udev event testing
       fastfetch
       fd
       file
@@ -134,6 +136,7 @@ in
       tree
       wget
       xdg-utils
+      xp-pen-deco-01-v2-driver # Proprietary Artist 12 2nd Gen driver
     ]
     ++ haskellPackages
     ++ fontPackages;
