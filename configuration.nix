@@ -104,6 +104,16 @@ in
     # See https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/op/opentabletdriver/package.nix
     opentabletdriver
   ];
+
+  services.smartd = {
+    enable = true;
+    devices = [
+      {
+        device = "/dev/disk/by-id/ata-CT1000BX500SSD1_2128E5B78645";
+      }
+    ];
+  };
+
   hardware.opentabletdriver.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -139,6 +149,7 @@ in
       qt6Packages.qtstyleplugin-kvantum
       ripgrep
       samba # For Windows server set up
+      smartmontools
       tmux
       tree
       wget
