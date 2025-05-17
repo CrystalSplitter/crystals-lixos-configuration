@@ -5,7 +5,7 @@
   ...
 }:
 let
-  
+
   # Args:
   #  sets - List of attribute sets to merge together.
   #
@@ -83,6 +83,7 @@ in
         blender # 3D Modelling program
         clementine # Music player
         firefox # Browser
+        feh # Image displayer
         gitnuro # Git GUI client
         inkscape # Vector art program
         kdePackages.kate # Text editor
@@ -112,6 +113,7 @@ in
 
         home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs ++ winePkgs;
         home.stateVersion = "24.11";
+
         programs = {
 
           # # For discord Krisp support, provided by discord_wrapper.nix
@@ -120,9 +122,8 @@ in
           #   wrapDiscord = true;
           # };
 
-          firefox = {
-            enable = true;
-          };
+          chromium.enable = true;
+          firefox.enable = true;
 
           fish = {
             enable = true;
@@ -166,4 +167,8 @@ in
     ];
   programs.fish.enable = true;
   programs.steam.enable = true;
+
+  # Some programs work better in flatpak than nix, and this
+  # is especially valuable when conducting testing.
+  services.flatpak.enable = true;
 }
