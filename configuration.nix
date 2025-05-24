@@ -145,13 +145,14 @@ in
       kotlin
       neovim
       nixos-rebuild-ng # Faster/safer nixos-rebuild
-      opentabletdriver
+      opentabletdriver # Doesn't usually work, but still useful to have
       qt6Packages.qtstyleplugin-kvantum
       ripgrep
       samba # For Windows server set up
-      smartmontools
+      smartmontools # For disk monitoring
       tmux
       tree
+      usbutils
       wget
       xdg-utils
       xp-pen-deco-01-v2-driver # Proprietary Artist 12 2nd Gen driver

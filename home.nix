@@ -77,18 +77,20 @@ in
       cliPkgs = with pkgs; [
         tig # Git TUI history viewer
         wl-clipboard # Wayland clipboard provider
+        clang-tools # Includes things like clangd
       ];
       desktopPkgs = with pkgs; [
         # alacritty # Terminal emulator
         blender # 3D Modelling program
         clementine # Music player
-        firefox # Browser
         feh # Image displayer
+        firefox # Browser
         gitnuro # Git GUI client
         inkscape # Vector art program
         kdePackages.kate # Text editor
         kicad # Electronics
         krita # Raster art program
+        libreoffice-qt6 # Office tool suite
         obsidian # Note taking app
         transmission_4-qt # Torrent client
         vesktop # Chat app wrapper
@@ -150,14 +152,19 @@ in
 
               neogit
               neo-tree-nvim
+              nvim-lspconfig
             ];
             extraLuaConfig = ''
-                          vim.opt.expandtab = true
-                          vim.opt.shiftwidth = 4
-                          vim.opt.tabstop = 4
+              vim.lsp.enable('clangd')
 
-                          require('lualine').setup()
-              	      '';
+              vim.opt.expandtab = true
+              vim.opt.shiftwidth = 4
+              vim.opt.tabstop = 4
+              vim.opt.number = true
+              vim.opt.signcolumn = 'yes'
+
+              require('lualine').setup()
+              '';
           };
         };
       }
