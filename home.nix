@@ -31,14 +31,18 @@ let
     };
   };
 
-  otto-theme-tar = builtins.fetchTarball {
+  # Original upstream otto theme.
+  orig-otto-theme = builtins.fetchTarball {
     url = "https://gitlab.com/jomada/otto/-/archive/master/otto-master.tar.gz";
     sha256 = "084p705prjmsz9wgkr1lpgjkyj8j2s9n8pb9fjgbk67fxy52mh77";
   };
 
+  # Custom otto theme.
+  otto-theme = ./dotfiles/Kvantum/Otto;
+
   theme = {
     xdg.configFile = {
-      "Kvantum/Otto".source = "${otto-theme-tar}/kvantum/Otto";
+      "Kvantum/Otto".source = otto-theme;
       "Kvantum/kvantum.kvconfig".text = ''
         [General]
         theme=Otto
@@ -144,31 +148,29 @@ in
             enable = true;
             defaultEditor = true;
             plugins = with pkgs.vimPlugins; [
+              # Libraries
               plenary-nvim
               nvim-web-devicons
               nui-nvim
 
               lualine-nvim
-
               neogit
               neo-tree-nvim
               nvim-lspconfig
             ];
             extraLuaConfig = ''
               vim.lsp.enable('clangd')
+              require('lualine').setup()
 
               vim.opt.expandtab = true
               vim.opt.shiftwidth = 4
               vim.opt.tabstop = 4
               vim.opt.number = true
               vim.opt.signcolumn = 'yes'
-
-              require('lualine').setup()
-              '';
+            '';
           };
         };
       }
-      # alacrittyConfig
       weztermConfig
       theme
     ];
