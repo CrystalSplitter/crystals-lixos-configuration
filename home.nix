@@ -79,9 +79,10 @@ in
     { pkgs, ... }:
     let
       cliPkgs = with pkgs; [
+        clang-tools # Includes things like clangd
+        shellcheck # Linter for BASH-like files
         tig # Git TUI history viewer
         wl-clipboard # Wayland clipboard provider
-        clang-tools # Includes things like clangd
       ];
       desktopPkgs = with pkgs; [
         # alacritty # Terminal emulator
@@ -89,6 +90,7 @@ in
         clementine # Music player
         feh # Image displayer
         firefox # Browser
+        fluent-reader
         gitnuro # Git GUI client
         inkscape # Vector art program
         kdePackages.kate # Text editor
