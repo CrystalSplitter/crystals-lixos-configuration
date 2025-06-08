@@ -103,6 +103,7 @@ in
         kdePackages.neochat
         kicad # Electronics
         krita # Raster art program
+        # (callPackage ./packages/krita-shortcutcomposer/package.nix {})
         libreoffice-qt6 # Office tool suite
         obsidian # Note taking app
         transmission_4-qt # Torrent client
