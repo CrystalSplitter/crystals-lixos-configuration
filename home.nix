@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 let
@@ -50,6 +51,60 @@ let
     };
   };
 
+  # Args:
+  #  plugins - vimPlugins package list (e.g. pkgs.vimPlugins)
+  #
+  # Returns:
+  #  List of plugins to install.
+  vim-plugins =
+    plugins: with plugins; [
+      # Libraries
+      plenary-nvim
+      nvim-web-devicons
+      nui-nvim
+
+      lualine-nvim
+      neogit
+      neo-tree-nvim
+      nvim-lspconfig # Default LSP configs
+
+      sonokai # Colours
+    ];
+
+  vim-config = ''
+    vim.lsp.enable('clangd')
+    vim.lsp.enable('hls')
+
+    -- --- Colours ---
+    vim.opt.termguicolors = true
+    vim.g.sonokai_style = 'maia'
+    vim.cmd.colorscheme('sonokai')
+
+    require('lualine').setup {
+      options = {
+        theme = 'sonokai'
+      }
+    }
+
+    -- --- Remappings and keybinds ---
+    local keycode = vim.keycode
+    vim.g.mapleader = keycode','
+
+    -- Neotree
+    vim.keymap.set('n', '<Leader>|', '<cmd>Neotree left reveal<cr>')
+    vim.keymap.set('n', '<Leader>b', '<cmd>Neotree toggle show buffers right<cr>')
+
+    -- Nvim LSP
+    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+
+    -- --- Generic ---
+    vim.opt.expandtab = true
+    vim.opt.shiftwidth = 4
+    vim.opt.tabstop = 4
+    vim.opt.signcolumn = 'yes'
+    vim.opt.number = true
+  '';
+
 in
 {
   # For opening links in external xdg-open browsers
@@ -72,7 +127,7 @@ in
     shell = pkgs.fish;
     # Rest of packages configured in home.nix
   };
-  
+
   # Needed for neochat
   # *sigh* ..........
   nixpkgs.config.permittedInsecurePackages = [
@@ -81,6 +136,7 @@ in
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
+  home-manager.backupFileExtension = "hm-backup";
   home-manager.users.crystal =
     { pkgs, ... }:
     let
@@ -157,27 +213,8 @@ in
           neovim = {
             enable = true;
             defaultEditor = true;
-            plugins = with pkgs.vimPlugins; [
-              # Libraries
-              plenary-nvim
-              nvim-web-devicons
-              nui-nvim
-
-              lualine-nvim
-              neogit
-              neo-tree-nvim
-              nvim-lspconfig
-            ];
-            extraLuaConfig = ''
-              vim.lsp.enable('clangd')
-              require('lualine').setup()
-
-              vim.opt.expandtab = true
-              vim.opt.shiftwidth = 4
-              vim.opt.tabstop = 4
-              vim.opt.number = true
-              vim.opt.signcolumn = 'yes'
-            '';
+            plugins = vim-plugins pkgs.vimPlugins;
+            extraLuaConfig = vim-config;
           };
         };
       }

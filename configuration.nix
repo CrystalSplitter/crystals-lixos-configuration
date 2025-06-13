@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   haskellPackages = with pkgs; [
     ghc
@@ -41,6 +46,10 @@ in
 
   networking.hostName = "seafoam"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  security.sudo.extraConfig = ''
+    Defaults:USER timestamp_timeout=30
+  '';
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -138,6 +147,7 @@ in
       fish
       htop
       hyfetch
+      iotop
       kotlin
       neovim
       nixos-rebuild-ng # Faster/safer nixos-rebuild
