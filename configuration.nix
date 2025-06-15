@@ -148,6 +148,7 @@ in
       htop
       hyfetch
       iotop
+      kdePackages.partitionmanager # For configuring disk partitions
       kotlin
       neovim
       nixos-rebuild-ng # Faster/safer nixos-rebuild

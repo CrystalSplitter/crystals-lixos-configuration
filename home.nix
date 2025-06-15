@@ -163,6 +163,7 @@ in
         libreoffice-qt6 # Office tool suite
         obsidian # Note taking app
         transmission_4-qt # Torrent client
+        usbimager # USB Image Flasher
         vesktop # Chat app wrapper
         wezterm # Terminal emulator
       ];
