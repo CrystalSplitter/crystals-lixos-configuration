@@ -110,15 +110,6 @@ in
     opentabletdriver
   ];
 
-  services.smartd = {
-    enable = true;
-    devices = [
-      {
-        device = "/dev/disk/by-id/ata-CT1000BX500SSD1_2128E5B78645";
-      }
-    ];
-  };
-
   hardware.opentabletdriver.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
