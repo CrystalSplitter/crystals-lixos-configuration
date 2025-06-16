@@ -77,7 +77,7 @@ let
 
     -- --- Colours ---
     vim.opt.termguicolors = true
-    vim.g.sonokai_style = 'maia'
+    vim.g.sonokai_style = 'atlantis'
     vim.cmd.colorscheme('sonokai')
 
     require('lualine').setup {
