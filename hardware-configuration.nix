@@ -13,13 +13,23 @@
   fileSystems."/" =
     { device = "/dev/disk/by-partlabel/seafoam-60g-root";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [
+        "subvol=@"
+        "noatime"
+        "nodiratime"
+        "discard"
+      ];
     };
 
   fileSystems."/home" =
     { device = "/dev/disk/by-partlabel/seafoam-60g-root";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [
+        "subvol=@home"
+        "noatime"
+        "nodiratime"
+        "discard"
+      ];
     };
 
   fileSystems."/boot" =
