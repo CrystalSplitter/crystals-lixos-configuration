@@ -31,6 +31,14 @@ let
       };
     };
   };
+  
+  tmuxConfig = {
+    xdg.configFile = {
+      "tmux/tmux.conf" = {
+        source = ./dotfiles/tmux.conf;
+      };
+    };
+  };
 
   # Original upstream otto theme.
   orig-otto-theme = builtins.fetchTarball {
@@ -74,12 +82,13 @@ let
   vim-config = ''
     vim.lsp.enable('clangd')
     vim.lsp.enable('hls')
+    vim.lsp.enable('pyright')
 
     -- --- Colours ---
-    vim.opt.termguicolors = true
+    vim.o.termguicolors = true
     vim.g.sonokai_style = 'atlantis'
     vim.cmd.colorscheme('sonokai')
-
+    
     require('lualine').setup {
       options = {
         theme = 'sonokai'
@@ -221,6 +230,7 @@ in
       }
       weztermConfig
       theme
+      tmuxConfig
     ];
   programs.fish.enable = true;
   programs.steam.enable = true;
