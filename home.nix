@@ -150,6 +150,7 @@ in
     { pkgs, ... }:
     let
       cliPkgs = with pkgs; [
+        backblaze-b2 # Backup/cold-storage bucket utils
         clang-tools # Includes things like clangd
         shellcheck # Linter for BASH-like files
         tig # Git TUI history viewer
