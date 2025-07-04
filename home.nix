@@ -31,7 +31,7 @@ let
       };
     };
   };
-  
+
   tmuxConfig = {
     xdg.configFile = {
       "tmux/tmux.conf" = {
@@ -88,7 +88,7 @@ let
     vim.o.termguicolors = true
     vim.g.sonokai_style = 'atlantis'
     vim.cmd.colorscheme('sonokai')
-    
+
     require('lualine').setup {
       options = {
         theme = 'sonokai'
