@@ -75,6 +75,7 @@ let
       neogit
       neo-tree-nvim
       nvim-lspconfig # Default LSP configs
+      typescript-tools-nvim # Typescript LSP
 
       sonokai # Colours
     ];
@@ -83,6 +84,7 @@ let
     vim.lsp.enable('clangd')
     vim.lsp.enable('hls')
     vim.lsp.enable('pyright')
+    require("typescript-tools").setup {}
 
     -- --- Colours ---
     vim.o.termguicolors = true
@@ -219,6 +221,11 @@ in
             userEmail = "crystal@crystalwobsite.gay";
             userName = "CrystalSplitter";
             lfs.enable = true;
+            extraConfig = {
+                commit = {
+                  verbose = true;
+                };
+            };
           };
 
           neovim = {
