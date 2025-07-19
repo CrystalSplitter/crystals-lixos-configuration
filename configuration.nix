@@ -136,11 +136,13 @@ in
       fd
       file
       fish
+      gdb
       htop
       hyfetch
       iotop
       kdePackages.partitionmanager # For configuring disk partitions
       kotlin
+      lldb
       neovim
       nixos-rebuild-ng # Faster/safer nixos-rebuild
       opentabletdriver # Doesn't usually work, but still useful to have
