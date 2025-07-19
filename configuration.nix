@@ -110,6 +110,9 @@ in
     opentabletdriver
   ];
 
+  # Enable for debuginfo automatic downloading in GDB.
+  services.nixseparatedebuginfod.enable = true;
+
   hardware.opentabletdriver.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
