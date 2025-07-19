@@ -159,6 +159,7 @@ in
         wl-clipboard # Wayland clipboard provider
       ];
       desktopPkgs = with pkgs; [
+        audacity
         # alacritty # Terminal emulator
         blender # 3D Modelling program
         clementine # Music player
