@@ -202,11 +202,11 @@ in
 
         programs = {
 
-          # # For discord Krisp support, provided by discord_wrapper.nix
-          # discord = {
-          #   enable = true;
-          #   wrapDiscord = true;
-          # };
+          # For discord Krisp support, provided by discord_wrapper.nix
+          discord = {
+            enable = true;
+            # wrapDiscord = true;
+          };
 
           chromium.enable = true;
           firefox.enable = true;
@@ -223,9 +223,9 @@ in
             userName = "CrystalSplitter";
             lfs.enable = true;
             extraConfig = {
-                commit = {
-                  verbose = true;
-                };
+              commit = {
+                verbose = true;
+              };
             };
           };
 

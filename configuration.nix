@@ -167,6 +167,9 @@ in
     defaultEditor = true;
   };
 
+  # Enable noise suppression virtual source/sink.
+  programs.noisetorch.enable = true;
+
   qt = {
     enable = true;
     style = "kvantum";
