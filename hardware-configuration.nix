@@ -23,7 +23,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-partlabel/seafoam-60g-root";
+    device = "/dev/disk/by-uuid/b028a5c3-c289-4fc7-b339-aeebd0c69c24";
     fsType = "btrfs";
     options = [
       "subvol=@"
@@ -34,7 +34,7 @@
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-partlabel/seafoam-60g-root";
+    device = "/dev/disk/by-uuid/b028a5c3-c289-4fc7-b339-aeebd0c69c24";
     fsType = "btrfs";
     options = [
       "subvol=@home"
@@ -45,7 +45,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/98BC-F460";
+    device = "/dev/disk/by-uuid/F1E7-E542";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -54,7 +54,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/7e7797b1-b6f2-47cf-ae4c-c2a5c01fe762"; }
+    { device = "/dev/disk/by-uuid/ee98e736-e1bf-4d98-914d-7928176dee7b"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
