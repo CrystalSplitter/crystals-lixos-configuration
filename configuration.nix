@@ -114,6 +114,20 @@ in
   services.nixseparatedebuginfod.enable = true;
 
   hardware.opentabletdriver.enable = true;
+  
+  services.monado = {
+    enable = true;
+    defaultRuntime = true; # Register as default OpenXR runtime
+    highPriority = true;
+  };
+  systemd.user.services.monado = {
+    environment = {
+      # From https://lvra.gitlab.io/docs/fossvr/monado/
+      # and https://wiki.nixos.org/wiki/VR#Monado
+      XRT_COMPOSITOR_COMPUTE = "1";
+      STEAMVR_LH_ENABLE = "true";
+    };
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

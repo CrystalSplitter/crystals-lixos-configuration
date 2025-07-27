@@ -116,6 +116,29 @@ let
     vim.opt.number = true
   '';
 
+  vr-config = config: {
+    # For Monado x OpenComposite
+    xdg.configFile = {
+      "openxr/1/active_runtime.json".source = "${pkgs.monado}/share/openxr/1/openxr_monado.json";
+      "openvr/openvrpaths.vrpath".text = ''
+        {
+          "config": [
+            "${config.xdg.dataHome}/Steam/config"
+          ],
+          "external_drivers": null,
+          "jsonid": "vrpathreg",
+          "log": [
+            "${config.xdg.dataHome}/Steam/logs"
+          ],
+          "runtime": [
+            "${pkgs.opencomposite}/lib/opencomposite"
+          ],
+          "version": 1
+        }
+      '';
+    };
+  };
+
 in
 {
   # For opening links in external xdg-open browsers
@@ -149,7 +172,7 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "hm-backup";
   home-manager.users.crystal =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     let
       cliPkgs = with pkgs; [
         backblaze-b2 # Backup/cold-storage bucket utils
@@ -240,6 +263,7 @@ in
       weztermConfig
       theme
       tmuxConfig
+      (vr-config config)
     ];
   programs.fish.enable = true;
   programs.steam.enable = true;
