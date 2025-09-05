@@ -7,13 +7,19 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fluentflame-reader.url = "github:FluentFlame/fluentflame-reader?dir=nix";
   };
   outputs =
     inputs@{ self, nixpkgs, ... }:
     let
       supportedSystems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
+      nixpkgsFor = forAllSystems (
+        system:
+        import nixpkgs {
+          inherit system;
+        }
+      );
     in
     {
       nixosConfigurations.seafoam = nixpkgs.lib.nixosSystem {
@@ -21,6 +27,11 @@
         modules = [
           inputs.home-manager.nixosModules.home-manager
           ./configuration.nix
+          {
+            nixpkgs.overlays = [
+              (final: prev: { fluentflame-reader = inputs.fluentflame-reader.packages.${prev.system}.default; })
+            ];
+          }
         ];
         specialArgs = { inherit inputs; };
       };
