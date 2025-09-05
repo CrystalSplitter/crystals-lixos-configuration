@@ -76,6 +76,7 @@ let
       neo-tree-nvim
       nvim-lspconfig # Default LSP configs
       typescript-tools-nvim # Typescript LSP
+      fzf-lua # FZF!
 
       sonokai # Colours
     ];
@@ -189,7 +190,9 @@ in
         feh # Image displayer
         firefox # Browser
         fluent-reader
+        fzf # Fuzzy finder
         gitnuro # Git GUI client
+        godot # Game engine!
         inkscape # Vector art program
         kdePackages.kate # Text editor
         kdePackages.neochat
