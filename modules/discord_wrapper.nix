@@ -36,7 +36,8 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = [
       discordPatcherBin
-    ] ++ (if cfg.wrapDiscord then [ wrapDiscordBinary ] else [ pkgs.discord ]);
+    ]
+    ++ (if cfg.wrapDiscord then [ wrapDiscordBinary ] else [ pkgs.discord ]);
 
     # considered adding a service here, that would patch discord using
     # a systemd service, but instead just opted to patch each time Discord starts
