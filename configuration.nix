@@ -44,6 +44,10 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Set the kernel version to work around Godot breakage.
+  # See https://github.com/godotengine/godot/issues/110152#issuecomment-3263399293
+  boot.kernelPackages = pkgs.linuxPackages_6_16;
+
   networking.hostName = "seafoam"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -190,7 +194,7 @@ in
   qt = {
     enable = true;
     style = "kvantum";
-    platformTheme = "kde6";
+    platformTheme = "kde";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
