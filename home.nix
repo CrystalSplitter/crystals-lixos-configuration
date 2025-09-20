@@ -183,8 +183,9 @@ in
         wl-clipboard # Wayland clipboard provider
       ];
       desktopPkgs = with pkgs; [
-        audacity
+        # (callPackage ./packages/krita-shortcutcomposer/package.nix {})
         # alacritty # Terminal emulator
+        audacity
         blender # 3D Modelling program
         clementine # Music player
         feh # Image displayer
@@ -198,8 +199,8 @@ in
         kdePackages.neochat
         kicad # Electronics
         krita # Raster art program
-        # (callPackage ./packages/krita-shortcutcomposer/package.nix {})
         libreoffice-qt6 # Office tool suite
+        aseprite # Pixel art editor
         obsidian # Note taking app
         transmission_4-qt # Torrent client
         usbimager # USB Image Flasher
