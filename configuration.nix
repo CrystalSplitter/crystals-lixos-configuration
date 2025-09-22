@@ -151,6 +151,11 @@ in
       zip
       unzip
 
+      aspell
+      aspellDicts.en
+      aspellDicts.en-computers
+      aspellDicts.en-science
+
       adwaita-icon-theme # Needed for icon compatibility
       curl
       evtest-qt # For udev event testing
