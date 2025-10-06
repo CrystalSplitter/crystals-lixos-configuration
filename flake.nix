@@ -6,7 +6,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    fluentflame-reader.url = "github:FluentFlame/fluentflame-reader?dir=nix";
+    fluentflame-reader.url = "github:FluentFlame/fluentflame-reader/master?dir=nix";
   };
   outputs =
     inputs@{ self, nixpkgs, ... }:

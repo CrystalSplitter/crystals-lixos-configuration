@@ -15,14 +15,16 @@ let
     haskell-language-server
   ];
   fontPackages = (
-    with pkgs.nerd-fonts;
+    (with pkgs.nerd-fonts;
     [
       fira-code
       gohufont
       hack
       lilex
       overpass
-    ]
+    ]) ++ (with pkgs; [
+      corefonts
+    ])
   );
 in
 {
@@ -171,6 +173,7 @@ in
       kotlin
       lldb
       neovim
+      nix-output-monitor # Build display graph
       nixos-rebuild-ng # Faster/safer nixos-rebuild
       opentabletdriver # Doesn't usually work, but still useful to have
       qt6Packages.qtstyleplugin-kvantum
