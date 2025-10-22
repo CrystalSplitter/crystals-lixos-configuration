@@ -85,7 +85,8 @@ let
     vim.lsp.enable('clangd')
     vim.lsp.enable('hls')
     vim.lsp.enable('pyright')
-    require("typescript-tools").setup {}
+    vim.lsp.enable('ts_ls')
+    -- require("typescript-tools").setup {}
 
     -- --- Colours ---
     vim.o.termguicolors = true
@@ -108,6 +109,18 @@ let
 
     -- Nvim LSP
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+    vim.opt.completeopt = { "menuone", "noselect", "popup" }
+    vim.lsp.config('ts_ls', {
+        on_attach = function(client, bufnr)
+            vim.lsp.completion.enable(true, client.id, bufnr, {
+		        autotrigger = true,
+		        convert = function(item)
+                    return { abbr = item.label:gsub("%b()", "") }
+		        end,
+            })
+            vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, { desc = "trigger autocompletion" })
+        end
+    })
 
     -- --- Generic ---
     vim.opt.expandtab = true
@@ -158,6 +171,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "wireshark"
     ];
     shell = pkgs.fish;
     # Rest of packages configured in home.nix
@@ -187,7 +201,7 @@ in
         # alacritty # Terminal emulator
         audacity
         blender # 3D Modelling program
-        clementine # Music player
+        strawberry # Music player
         feh # Image displayer
         firefox # Browser
         fluent-reader

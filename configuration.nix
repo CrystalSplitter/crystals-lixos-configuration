@@ -199,6 +199,12 @@ in
   # Enable noise suppression virtual source/sink.
   programs.noisetorch.enable = true;
 
+  # For network sniffing.
+  programs.wireshark = {
+    package = with pkgs; wireshark;
+    enable = true;
+  };
+
   qt = {
     enable = true;
     style = "kvantum";
