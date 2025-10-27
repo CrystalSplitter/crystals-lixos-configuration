@@ -46,9 +46,10 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # DISABLED, BUT KEEPING THIS AROUND FOR FUTURE ISSUES.
   # Set the kernel version to work around Godot breakage.
   # See https://github.com/godotengine/godot/issues/110152#issuecomment-3263399293
-  boot.kernelPackages = pkgs.linuxPackages_6_16;
+  # boot.kernelPackages = pkgs.linuxPackages_6_16;
 
   networking.hostName = "seafoam"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -117,7 +118,7 @@ in
   ];
 
   # Enable for debuginfo automatic downloading in GDB.
-  services.nixseparatedebuginfod.enable = true;
+  services.nixseparatedebuginfod2.enable = true;
 
   hardware.opentabletdriver.enable = true;
   

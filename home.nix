@@ -177,12 +177,6 @@ in
     # Rest of packages configured in home.nix
   };
 
-  # Needed for neochat
-  # *sigh* ..........
-  nixpkgs.config.permittedInsecurePackages = [
-    "olm-3.2.16"
-  ];
-
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "hm-backup";
@@ -210,7 +204,6 @@ in
         godot # Game engine!
         inkscape # Vector art program
         kdePackages.kate # Text editor
-        kdePackages.neochat
         kicad # Electronics
         krita # Raster art program
         libreoffice-qt6 # Office tool suite
