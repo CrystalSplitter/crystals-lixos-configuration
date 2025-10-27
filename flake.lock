@@ -25,11 +25,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1761525837,
-        "narHash": "sha256-ENQm6d+m3qV/9xc0OsFDTG1ytR4Z+4Q9Vo4cZT4kGes=",
+        "lastModified": 1761586934,
+        "narHash": "sha256-FEXHLaed9aKUNJQccHkgILhXmsZhZEJLYbmQAEuFi+k=",
         "owner": "FluentFlame",
         "repo": "fluentflame-reader",
-        "rev": "eea8fd89d2ed075f3b1dd720843d280d13a0c42e",
+        "rev": "52bdf19a9ac828a8f5215f9aa1fd97484d354a82",
         "type": "github"
       },
       "original": {
@@ -47,11 +47,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761530345,
-        "narHash": "sha256-+9+YCK9Lh6GThkXu/8JTxMFUnImIdZpb8ElUh6/F5Y8=",
+        "lastModified": 1761584077,
+        "narHash": "sha256-dISPEZahlfs5K6d58zR4akRRyogfE9P4WSyPPNT7HiE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bbaeb9f1c29e79bb1653b32c3d73244cdf4bd888",
+        "rev": "e82585308aef3d4cc2c36c7b6946051c8cdf24ef",
         "type": "github"
       },
       "original": {
