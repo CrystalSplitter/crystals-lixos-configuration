@@ -253,14 +253,12 @@ in
           git = {
             enable = true;
             package = pkgs.gitFull;
-            userEmail = "crystal@crystalwobsite.gay";
-            userName = "CrystalSplitter";
-            lfs.enable = true;
-            extraConfig = {
-              commit = {
-                verbose = true;
-              };
+            settings = {
+                user.name = "CrystalSplitter";
+                user.email = "crystal@crystalwobsite.gay";
+                commit.verbose = true;
             };
+            lfs.enable = true;
           };
 
           neovim = {
