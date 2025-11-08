@@ -212,6 +212,7 @@ in
         transmission_4-qt # Torrent client
         usbimager # USB Image Flasher
         vesktop # Chat app wrapper
+        vlc # Video player
         wezterm # Terminal emulator
       ];
       corporatePkgs = with pkgs; [
