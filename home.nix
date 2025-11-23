@@ -209,6 +209,7 @@ in
         libreoffice-qt6 # Office tool suite
         aseprite # Pixel art editor
         obsidian # Note taking app
+        signal-desktop # Messaging app
         transmission_4-qt # Torrent client
         usbimager # USB Image Flasher
         vesktop # Chat app wrapper
@@ -228,9 +229,7 @@ in
     in
     recursiveMerge [
       {
-        imports = [
-          ./modules/discord_wrapper.nix
-        ];
+        imports = [];
 
         home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs ++ winePkgs;
         home.stateVersion = "24.11";
@@ -238,10 +237,10 @@ in
         programs = {
 
           # For discord Krisp support, provided by discord_wrapper.nix
-          discord = {
-            enable = true;
+          # discord = {
+            # enable = true;
             # wrapDiscord = true;
-          };
+          # };
 
           chromium.enable = true;
           firefox.enable = true;
