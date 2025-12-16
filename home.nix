@@ -193,7 +193,7 @@ in
       desktopPkgs = with pkgs; [
         # (callPackage ./packages/krita-shortcutcomposer/package.nix {})
         # alacritty # Terminal emulator
-        audacity
+        audacity # Audio editing tool
         blender # 3D Modelling program
         strawberry # Music player
         feh # Image displayer
@@ -203,6 +203,7 @@ in
         gitnuro # Git GUI client
         godot # Game engine!
         inkscape # Vector art program
+        itch # Indie game store
         kdePackages.kate # Text editor
         kicad # Electronics
         krita # Raster art program
