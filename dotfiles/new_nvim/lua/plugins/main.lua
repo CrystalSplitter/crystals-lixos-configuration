@@ -13,6 +13,9 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      -- Indent lines are nice but they are pretty slow.
+      -- Uncertain why.
+      indent = { enabled = false },
       dashboard = {
         preset = {
           header = [[
@@ -46,5 +49,11 @@ return {
       vim.g.sonokai_better_performance = "1"
       vim.cmd.colorscheme("sonokai")
     end
+  },
+
+  -- Enable FZF Lua
+  {
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 }
