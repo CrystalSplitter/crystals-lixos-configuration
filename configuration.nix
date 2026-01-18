@@ -15,14 +15,14 @@ let
     haskell-language-server
   ];
   fontPackages = (
-    (with pkgs.nerd-fonts;
-    [
+    (with pkgs.nerd-fonts; [
       fira-code
       gohufont
       hack
       lilex
       overpass
-    ]) ++ (with pkgs; [
+    ])
+    ++ (with pkgs; [
       corefonts
     ])
   );
@@ -121,7 +121,7 @@ in
   services.nixseparatedebuginfod2.enable = true;
 
   hardware.opentabletdriver.enable = true;
-  
+
   services.monado = {
     enable = true;
     defaultRuntime = true; # Register as default OpenXR runtime

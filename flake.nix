@@ -14,9 +14,9 @@
       supportedSystems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (
-        system:
+        mySystem:
         import nixpkgs {
-          inherit system;
+          system = mySystem;
         }
       );
     in
@@ -28,16 +28,24 @@
           ./configuration.nix
           {
             nixpkgs.overlays = [
-              (final: prev: { fluentflame-reader = inputs.fluentflame-reader.packages.${prev.system}.default; })
+              (
+                final: prev:
+                let
+                  prevSystem = prev.stdenv.hostPlatform.system;
+                in
+                {
+                  fluentflame-reader = inputs.fluentflame-reader.packages.${prevSystem}.default;
+                }
+              )
             ];
           }
         ];
         specialArgs = { inherit inputs; };
       };
       formatter = forAllSystems (
-        system:
+        mySystem:
         let
-          pkgs = nixpkgsFor.${system};
+          pkgs = nixpkgsFor.${mySystem};
         in
         pkgs.nixfmt-tree
       );
