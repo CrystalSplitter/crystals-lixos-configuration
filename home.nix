@@ -66,10 +66,15 @@ let
   #  List of plugins to install.
   vim-plugins =
     plugins: with plugins; [
+
       # Libraries
       plenary-nvim
-      nvim-web-devicons
+      # nvim-web-devicons (Icons)
       nui-nvim
+      mini-icons # (Icons)
+
+      gitsigns-nvim # Git gutter (neat!)
+      indent-blankline-nvim # Indent support
 
       lualine-nvim
       neogit
@@ -81,53 +86,23 @@ let
       sonokai # Colours
     ];
 
+  nvimSharedConfig = {
+    xdg.configFile = {
+      "nvim" = {
+        source = ./dotfiles/nvim_shared;
+        recursive = true;
+      };
+    };
+  };
+
   vim-config = ''
     vim.lsp.enable('clangd')
     vim.lsp.enable('hls')
     vim.lsp.enable('pyright')
     vim.lsp.enable('ts_ls')
+
     -- require("typescript-tools").setup {}
-
-    -- --- Colours ---
-    vim.o.termguicolors = true
-    vim.g.sonokai_style = 'atlantis'
-    vim.cmd.colorscheme('sonokai')
-
-    require('lualine').setup {
-      options = {
-        theme = 'sonokai'
-      }
-    }
-
-    -- --- Remappings and keybinds ---
-    local keycode = vim.keycode
-    vim.g.mapleader = keycode','
-
-    -- Neotree
-    vim.keymap.set('n', '<Leader>|', '<cmd>Neotree left reveal<cr>')
-    vim.keymap.set('n', '<Leader>b', '<cmd>Neotree toggle show buffers right<cr>')
-
-    -- Nvim LSP
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-    vim.opt.completeopt = { "menuone", "noselect", "popup" }
-    vim.lsp.config('ts_ls', {
-        on_attach = function(client, bufnr)
-            vim.lsp.completion.enable(true, client.id, bufnr, {
-		        autotrigger = true,
-		        convert = function(item)
-                    return { abbr = item.label:gsub("%b()", "") }
-		        end,
-            })
-            vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, { desc = "trigger autocompletion" })
-        end
-    })
-
-    -- --- Generic ---
-    vim.opt.expandtab = true
-    vim.opt.shiftwidth = 4
-    vim.opt.tabstop = 4
-    vim.opt.signcolumn = 'yes'
-    vim.opt.number = true
+    require("options")
   '';
 
   vr-config = config: {
@@ -230,7 +205,7 @@ in
     in
     recursiveMerge [
       {
-        imports = [];
+        imports = [ ];
 
         home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs ++ winePkgs;
         home.stateVersion = "24.11";
@@ -239,8 +214,8 @@ in
 
           # For discord Krisp support, provided by discord_wrapper.nix
           # discord = {
-            # enable = true;
-            # wrapDiscord = true;
+          # enable = true;
+          # wrapDiscord = true;
           # };
 
           chromium.enable = true;
@@ -255,9 +230,9 @@ in
             enable = true;
             package = pkgs.gitFull;
             settings = {
-                user.name = "CrystalSplitter";
-                user.email = "crystal@crystalwobsite.gay";
-                commit.verbose = true;
+              user.name = "CrystalSplitter";
+              user.email = "crystal@crystalwobsite.gay";
+              commit.verbose = true;
             };
             lfs.enable = true;
           };
@@ -273,6 +248,7 @@ in
       weztermConfig
       theme
       tmuxConfig
+      nvimSharedConfig
       (vr-config config)
     ];
   programs.fish.enable = true;
