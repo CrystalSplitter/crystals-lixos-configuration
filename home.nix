@@ -96,10 +96,13 @@ let
   };
 
   vim-config = ''
-    vim.lsp.enable('clangd')
-    vim.lsp.enable('hls')
-    vim.lsp.enable('pyright')
-    vim.lsp.enable('ts_ls')
+    vim.lsp.enable("clangd")
+    vim.lsp.enable("hls")
+    vim.lsp.enable("pyright")
+    vim.lsp.enable("ts_ls")
+
+    -- Icons
+    require("mini.icons").setup()
 
     -- require("typescript-tools").setup {}
     require("options")
