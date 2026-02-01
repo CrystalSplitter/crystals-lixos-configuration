@@ -10,9 +10,7 @@
 }:
 let
   haskellPackages = with pkgs; [
-    ghc
-    cabal-install
-    haskell-language-server
+    ghc # We only want GHC for GHCi. Don't install haskell-language-server.
   ];
   fontPackages = (
     (with pkgs.nerd-fonts; [
