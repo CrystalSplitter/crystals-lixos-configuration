@@ -168,6 +168,7 @@ in
       htop
       hyfetch
       iotop
+      jq # JSON Parser
       kdePackages.partitionmanager # For configuring disk partitions
       kotlin
       lldb

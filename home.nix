@@ -171,24 +171,26 @@ in
       desktopPkgs = with pkgs; [
         # (callPackage ./packages/krita-shortcutcomposer/package.nix {})
         # alacritty # Terminal emulator
+        aseprite # Pixel art editor
         audacity # Audio editing tool
         blender # 3D Modelling program
-        strawberry # Music player
+        element-desktop # Matrix chat
         feh # Image displayer
         firefox # Browser
         fluent-reader
         fzf # Fuzzy finder
         gitnuro # Git GUI client
         godot # Game engine!
+        halloy # IRC client
         inkscape # Vector art program
         itch # Indie game store
         kdePackages.kate # Text editor
         kicad # Electronics
         krita # Raster art program
         libreoffice-qt6 # Office tool suite
-        aseprite # Pixel art editor
         obsidian # Note taking app
         signal-desktop # Messaging app
+        strawberry # Music player
         transmission_4-qt # Torrent client
         usbimager # USB Image Flasher
         vesktop # Chat app wrapper
