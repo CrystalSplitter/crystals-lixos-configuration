@@ -25,11 +25,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1770577028,
-        "narHash": "sha256-6fdYKc4XWaKECQ616rhIg2rqFPDF4QFotXgyyDyRSZ8=",
+        "lastModified": 1771913473,
+        "narHash": "sha256-znfrhsQwBjj1mVchJ6qAuBDcKH7T5ar0ZgZ/PqaPs50=",
         "owner": "FluentFlame",
         "repo": "fluentflame-reader",
-        "rev": "1eea7324d1518b1daabfe61b442b622f612f53a3",
+        "rev": "a930e9c1c8f49944f29afe8c8660e21dee394d40",
         "type": "github"
       },
       "original": {
