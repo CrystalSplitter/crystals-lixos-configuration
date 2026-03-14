@@ -204,7 +204,7 @@ in
         python # Python interpreter
         black # Code formatter
       ];
-      winePkgs = with pkgs.wineWowPackages; [
+      winePkgs = with pkgs.wineWow64Packages; [
         full
       ];
     in
@@ -246,7 +246,7 @@ in
             enable = true;
             defaultEditor = true;
             plugins = vim-plugins pkgs.vimPlugins;
-            extraLuaConfig = vim-config;
+            initLua = vim-config;
           };
         };
       }
