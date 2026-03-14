@@ -22,6 +22,9 @@ let
     ])
     ++ (with pkgs; [
       corefonts
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-monochrome-emoji
     ])
   );
 in
@@ -191,6 +194,8 @@ in
     ]
     ++ haskellPackages
     ++ fontPackages;
+
+  fonts.packages = fontPackages;
 
   programs.neovim = {
     defaultEditor = true;
