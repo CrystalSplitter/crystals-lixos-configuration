@@ -24,6 +24,7 @@ let
       corefonts
       noto-fonts
       noto-fonts-cjk-sans
+      noto-fonts-color-emoji
       noto-fonts-monochrome-emoji
     ])
   );
@@ -195,7 +196,10 @@ in
     ++ haskellPackages
     ++ fontPackages;
 
-  fonts.packages = fontPackages;
+  fonts = {
+    packages = fontPackages;
+    fontconfig.useEmbeddedBitmaps = true;
+  };
 
   programs.neovim = {
     defaultEditor = true;
