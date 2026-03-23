@@ -240,6 +240,7 @@ in
               commit.verbose = true;
             };
             lfs.enable = true;
+            signing.key = null; # Let the signer decide signing.
           };
 
           neovim = {
