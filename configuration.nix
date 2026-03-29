@@ -163,6 +163,7 @@ in
 
       adwaita-icon-theme # Needed for icon compatibility
       curl
+      docker # Ughhhh
       evtest-qt # For udev event testing
       fastfetch
       fd
