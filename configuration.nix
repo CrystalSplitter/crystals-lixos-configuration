@@ -45,7 +45,16 @@ in
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev"; # "nodev" is used for UEFI
+    efiSupport = true;
+    # HARDWARE SPECIFIC: BADRAM
+    extraConfig = ''
+      badram 0x00000002ddef0000,0xffffffffffff0000,0x000000057bed0000,0xfffffffffffe0000
+    '';
+  };
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # DISABLED, BUT KEEPING THIS AROUND FOR FUTURE ISSUES.
