@@ -204,8 +204,8 @@ in
         python # Python interpreter
         black # Code formatter
       ];
-      winePkgs = with pkgs.wineWow64Packages; [
-        full
+      winePkgs = with pkgs; [
+        wineWow64Packages.stable
       ];
     in
     recursiveMerge [
