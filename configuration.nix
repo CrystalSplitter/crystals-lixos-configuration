@@ -125,13 +125,13 @@ in
   services.udev.packages = with pkgs; [
     # Needed for accessing /dev/hidraw devices.
     # See https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/op/opentabletdriver/package.nix
-    opentabletdriver
+    # opentabletdriver
   ];
 
   # Enable for debuginfo automatic downloading in GDB.
   services.nixseparatedebuginfod2.enable = true;
 
-  hardware.opentabletdriver.enable = true;
+  # hardware.opentabletdriver.enable = true;
 
   services.monado = {
     enable = true;
@@ -189,7 +189,7 @@ in
       neovim
       nix-output-monitor # Build display graph
       nixos-rebuild-ng # Faster/safer nixos-rebuild
-      opentabletdriver # Doesn't usually work, but still useful to have
+      # opentabletdriver # Doesn't usually work, but still useful to have
       qt6Packages.qtstyleplugin-kvantum
       ripgrep
       samba # For Windows server set up
