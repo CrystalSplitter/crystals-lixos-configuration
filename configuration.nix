@@ -200,8 +200,6 @@ in
       wget
       xdg-utils
       xp-pen-deco-01-v2-driver # Proprietary Artist 12 2nd Gen driver
-
-      fluentflame-reader # Can't be installed in home-manager without overlay hacks.
     ]
     ++ haskellPackages
     ++ fontPackages;

@@ -177,7 +177,8 @@ in
         element-desktop # Matrix chat
         feh # Image displayer
         firefox # Browser
-        fluent-reader
+        fluent-reader # RSS Reader
+        fluentflame-reader # RSS Reader
         fzf # Fuzzy finder
         gitnuro # Git GUI client
         godot # Game engine!
