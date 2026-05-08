@@ -219,7 +219,8 @@ in
   # For network sniffing.
   programs.wireshark = {
     package = with pkgs; wireshark;
-    enable = true;
+    # Upstream build failure.
+    # enable = true;
   };
 
   qt = {

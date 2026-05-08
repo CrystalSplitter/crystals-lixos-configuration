@@ -249,6 +249,8 @@ in
             defaultEditor = true;
             plugins = vim-plugins pkgs.vimPlugins;
             initLua = vim-config;
+            withPython3 = false;
+            withRuby = false;
           };
         };
       }
