@@ -22,6 +22,7 @@ let
     ])
     ++ (with pkgs; [
       corefonts
+      fixedsys-excelsior
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
