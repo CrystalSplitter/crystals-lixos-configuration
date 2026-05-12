@@ -100,6 +100,7 @@ let
     vim.lsp.enable("hls")
     vim.lsp.enable("pyright")
     vim.lsp.enable("ts_ls")
+    vim.lsp.enable("rust_analyzer")
 
     -- Icons
     require("mini.icons").setup()
