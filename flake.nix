@@ -2,6 +2,7 @@
   description = "Crystal's system deployments";
   inputs = {
     nixpkgs.url = "github:/NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs-stable.url = "github:/NixOS/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +38,16 @@
                   fluentflame-reader = inputs.fluentflame-reader.packages.${prevSystem}.default;
                 }
               )
+              #(
+              #  # Downgrade Krita to stable.
+              #  final: prev:
+              #  let
+              #    prevSystem = prev.stdenv.hostPlatform.system;
+              #  in
+              #  {
+              #    krita = inputs.nixpkgs-stable.legacyPackages.${prevSystem}.krita;
+              #  }
+              #)
             ];
           }
         ];
