@@ -5,6 +5,7 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
 }:
@@ -29,6 +30,10 @@ let
       noto-fonts-monochrome-emoji
     ])
   );
+  fishPackages = (with pkgs; [
+      fish # Fish shell!
+      fishPlugins.hydro # fish prompt theming
+  ]);
 in
 {
   imports = [
@@ -127,6 +132,10 @@ in
     # Needed for accessing /dev/hidraw devices.
     # See https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/op/opentabletdriver/package.nix
     opentabletdriver
+    # Needed for controller support.
+    # See https://nixos.wiki/wiki/Dolphin_Emulator?__cf_chl_f_tk=AKffCTUdpAXlefx.gW679Vg0YYmTTZiZz4h_Kv.6AyU-1783320328-1.0.1.1-iBIlvHni0h2CTRCZJp87ZO7ll6j9calmmA2tCHX77A4
+    dolphin-emu-primehack
+    dolphin-emu
   ];
 
   # Enable for debuginfo automatic downloading in GDB.
@@ -174,11 +183,13 @@ in
       adwaita-icon-theme # Needed for icon compatibility
       curl
       docker # Ughhhh
+      dolphin-emu # Emulator for preservation
+      dolphin-emu-primehack # Emulator for preservation
       evtest-qt # For udev event testing
       fastfetch
       fd
       file
-      fish
+      fzf
       gdb
       htop
       hyfetch
@@ -203,6 +214,7 @@ in
       xdg-utils
       xp-pen-deco-01-v2-driver # Proprietary Artist 12 2nd Gen driver
     ]
+    ++ fishPackages
     ++ haskellPackages
     ++ fontPackages;
 
