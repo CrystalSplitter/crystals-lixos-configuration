@@ -182,6 +182,7 @@ in
         audacity # Audio editing tool
         blender # 3D Modelling program
         element-desktop # Matrix chat
+        espeak-ng # Voice synth
         feh # Image displayer
         firefox # Browser
         fluent-reader # RSS Reader
