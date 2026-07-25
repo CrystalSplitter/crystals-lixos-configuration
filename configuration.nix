@@ -30,10 +30,12 @@ let
       noto-fonts-monochrome-emoji
     ])
   );
-  fishPackages = (with pkgs; [
+  fishPackages = (
+    with pkgs;
+    [
       fish # Fish shell!
-      fishPlugins.hydro # fish prompt theming
-  ]);
+    ]
+  );
 in
 {
   imports = [

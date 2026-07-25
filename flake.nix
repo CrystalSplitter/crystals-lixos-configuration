@@ -38,13 +38,10 @@
                   fluentflame-reader = inputs.fluentflame-reader.packages.${prevSystem}.default;
                 }
               )
-              (
-                final: _prev:
-                {
-                  # Patch for https://github.com/NixOS/nixpkgs/issues/536623
-                  pnpm_10_29_2 = final.pnpm_10;
-                }
-              )
+              (final: _prev: {
+                # Patch for https://github.com/NixOS/nixpkgs/issues/536623
+                pnpm_10_29_2 = final.pnpm_10;
+              })
               #(
               #  # Downgrade Krita to stable.
               #  final: prev:

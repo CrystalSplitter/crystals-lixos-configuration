@@ -86,6 +86,12 @@ let
       sonokai # Colours
     ];
 
+  # List of strings of plugin names
+  # under `pkgs.fishPlugins`
+  myFishPlugins = [
+    "hydro"
+  ];
+
   nvimSharedConfig = {
     xdg.configFile = {
       "nvim" = {
@@ -212,7 +218,7 @@ in
     in
     recursiveMerge [
       {
-        imports = [ ];
+        imports = [ ./modules/fish.nix ];
 
         home.packages = cliPkgs ++ pythonPkgs ++ desktopPkgs ++ corporatePkgs ++ winePkgs;
         home.stateVersion = "24.11";
@@ -227,11 +233,6 @@ in
 
           chromium.enable = true;
           firefox.enable = true;
-
-          fish = {
-            enable = true;
-            shellInit = builtins.readFile ./dotfiles/fish/config.fish;
-          };
 
           git = {
             enable = true;
