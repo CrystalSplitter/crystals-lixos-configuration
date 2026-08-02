@@ -128,6 +128,21 @@ in
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
+
+    extraConfig.pipewire."91-null-util-sinks" = {
+      "context.objects" = [
+        {
+          factory = "adapter";
+          args = {
+            "factory.name" = "support.null-audio-sink";
+            "node.name" = "Crystal's eSpeak Null Sink";
+            "node.description" = "Null sink used for eSpeak to target";
+            "media.class" = "Audio/Sink";
+            "audio.position" = "[ FL FR ]";
+          };
+        }
+      ];
+    };
   };
 
   services.udev.packages = with pkgs; [

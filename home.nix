@@ -171,6 +171,8 @@ in
       cliPkgs = with pkgs; [
         backblaze-b2 # Backup/cold-storage bucket utils
         clang-tools # Includes things like clangd
+        espeak-ng # Voice synth
+        fzf # Fuzzy finder
         shellcheck # Linter for BASH-like files
         tig # Git TUI history viewer
         wl-clipboard # Wayland clipboard provider
@@ -182,22 +184,20 @@ in
         audacity # Audio editing tool
         blender # 3D Modelling program
         element-desktop # Matrix chat
-        espeak-ng # Voice synth
         feh # Image displayer
         firefox # Browser
-        fluent-reader # RSS Reader
         fluentflame-reader # RSS Reader
-        fzf # Fuzzy finder
         gitnuro # Git GUI client
         godot # Game engine!
         halloy # IRC client
         inkscape # Vector art program
         itch # Indie game store
         kdePackages.kate # Text editor
-        kicad # Electronics
+        # kicad # Electronics
         krita # Raster art program
         libreoffice-qt6 # Office tool suite
         obsidian # Note taking app
+        qpwgraph # Qt Audio Patchpanel
         signal-desktop # Messaging app
         strawberry # Music player
         transmission_4-qt # Torrent client
