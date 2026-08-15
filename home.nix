@@ -180,7 +180,7 @@ in
       desktopPkgs = with pkgs; [
         # (callPackage ./packages/krita-shortcutcomposer/package.nix {})
         # alacritty # Terminal emulator
-        aseprite # Pixel art editor
+        # aseprite # Pixel art editor
         audacity # Audio editing tool
         blender # 3D Modelling program
         element-desktop # Matrix chat
