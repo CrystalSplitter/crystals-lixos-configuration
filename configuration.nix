@@ -153,7 +153,11 @@ in
     # See https://nixos.wiki/wiki/Dolphin_Emulator?__cf_chl_f_tk=AKffCTUdpAXlefx.gW679Vg0YYmTTZiZz4h_Kv.6AyU-1783320328-1.0.1.1-iBIlvHni0h2CTRCZJp87ZO7ll6j9calmmA2tCHX77A4
     dolphin-emu-primehack
     dolphin-emu
+
+    wine
   ];
+
+  services.input-remapper.enable = true;
 
   # Enable for debuginfo automatic downloading in GDB.
   services.nixseparatedebuginfod2.enable = true;
